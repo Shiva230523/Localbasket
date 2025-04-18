@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIR=os.path.join(BASE_DIR,'templates')
@@ -100,7 +101,7 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
+DATABASES['default'] = dj_database_url.parse('postgresql://localbasket_db_user:N8R7XWHSGRbaL4O3Q0jIkRhQz92OMV9a@dpg-d018ts9r0fns73b87n90-a.virginia-postgres.render.com/localbasket_db')
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators

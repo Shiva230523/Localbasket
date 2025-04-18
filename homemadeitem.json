@@ -1,0 +1,80 @@
+[
+{
+  "model": "homemade.homemadeitem",
+  "pk": 1,
+  "fields": {
+    "homemade_user": 4,
+    "item": "Tamato",
+    "price": 20.0,
+    "address": "rythu bazar",
+    "image": "homemade_items/download.webp",
+    "order_limit": 10,
+    "order_count": 0
+  }
+},
+{
+  "model": "homemade.homemadeitem",
+  "pk": 4,
+  "fields": {
+    "homemade_user": 3,
+    "item": "manjo picle",
+    "price": 995.0,
+    "address": "duidigd",
+    "image": "homemade_items/download_1_o37SLeI.jpeg",
+    "order_limit": 10,
+    "order_count": 0
+  }
+},
+{
+  "model": "homemade.homemadeitem",
+  "pk": 5,
+  "fields": {
+    "homemade_user": 3,
+    "item": "Tamato pickel",
+    "price": 129.0,
+    "address": "shshs",
+    "image": "homemade_items/download_2ngibCk.webp",
+    "order_limit": 10,
+    "order_count": 0
+  }
+},
+{
+  "model": "homemade.homemadeitem",
+  "pk": 6,
+  "fields": {
+    "homemade_user": 3,
+    "item": "kaybayji pickel",
+    "price": 990.0,
+    "address": "jyh",
+    "image": "homemade_items/potato_mh7UAZg.jpg",
+    "order_limit": 10,
+    "order_count": 0
+  }
+},
+{
+  "model": "homemade.homemadeitem",
+  "pk": 7,
+  "fields": {
+    "homemade_user": 3,
+    "item": "berakay pachadi",
+    "price": 554.0,
+    "address": "dkdkd",
+    "image": "homemade_items/1078546.jpg",
+    "order_limit": 10,
+    "order_count": 0
+  }
+},
+{
+  "model": "homemade.homemadeitem",
+  "pk": 8,
+  "fields": {
+    "homemade_user": 3,
+    "item": "royalaa pachadi",
+    "price": 1200.0,
+    "address": "rhryirr",
+    "image": "homemade_items/download.jpg",
+    "order_limit": 2,
+    "order_count": 0
+  }
+}
+]

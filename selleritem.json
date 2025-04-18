@@ -1,0 +1,24 @@
+[
+{
+  "model": "seller.selleritem",
+  "pk": 6,
+  "fields": {
+    "seller": 1,
+    "item": "potataaa",
+    "price": 36.0,
+    "address": "yegffigf",
+    "image": "seller_item_images/potato_sj8Hrfv.jpg"
+  }
+},
+{
+  "model": "seller.selleritem",
+  "pk": 7,
+  "fields": {
+    "seller": 1,
+    "item": "Tamato",
+    "price": 18.0,
+    "address": "ugy",
+    "image": "seller_item_images/download.webp"
+  }
+}
+]

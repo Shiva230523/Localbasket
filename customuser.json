@@ -1,0 +1,97 @@
+[
+{
+  "model": "accounts.customuser",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$870000$vsa6TZRy3hDWtArKVwwYtG$EA6TaQQDgf3jAKCt6T2ZXh4O1CYE6BpExuMkn40yvIQ=",
+    "last_login": "2025-04-18T11:34:27.432Z",
+    "email": "shivagoudpalakurthy@gmail.com",
+    "phone_number": "9121825812",
+    "first_name": "Shiva",
+    "last_name": "p",
+    "address": "miyapur",
+    "is_buyer": false,
+    "is_seller": true,
+    "is_homemade": false,
+    "is_active": true,
+    "is_staff": false,
+    "date_joined": "2025-04-11T16:24:32.340Z"
+  }
+},
+{
+  "model": "accounts.customuser",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$870000$bgFmVXoNMa9qirLHLlh5wo$gWEmMWC7yP3cgncP8Z8ErGm3eAyCndLm0mgNbjVLAYE=",
+    "last_login": "2025-04-18T11:56:20.133Z",
+    "email": "palakurthyshiva38@gmail.com",
+    "phone_number": "9121825813",
+    "first_name": "Shiva",
+    "last_name": "Palakurthy",
+    "address": "miyapur",
+    "is_buyer": true,
+    "is_seller": false,
+    "is_homemade": false,
+    "is_active": true,
+    "is_staff": false,
+    "date_joined": "2025-04-11T16:26:11.652Z"
+  }
+},
+{
+  "model": "accounts.customuser",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$870000$K5Z9UARl8wGtKrDPLnwjPL$Xc6dKsmFf+8hg424TnnT+7yy1tQygo7r/OShF2tlMGc=",
+    "last_login": "2025-04-18T11:31:52.538Z",
+    "email": "palakurthyshiva9@gmail.com",
+    "phone_number": "9121825818",
+    "first_name": "chivaaa",
+    "last_name": "shiva",
+    "address": "Hyd",
+    "is_buyer": false,
+    "is_seller": false,
+    "is_homemade": true,
+    "is_active": true,
+    "is_staff": false,
+    "date_joined": "2025-04-11T21:44:11.508Z"
+  }
+},
+{
+  "model": "accounts.customuser",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$870000$ha5cL3goE74skelYkGWigH$1e417xajmT38SU4L0w0REojs6t/7NjzvPaP2jo/mSOM=",
+    "last_login": "2025-04-12T10:57:03.670Z",
+    "email": "patelharsha687@gmail.com",
+    "phone_number": "9676610402",
+    "first_name": "HARSHA",
+    "last_name": "PATEL",
+    "address": "METPALLY",
+    "is_buyer": false,
+    "is_seller": false,
+    "is_homemade": true,
+    "is_active": true,
+    "is_staff": false,
+    "date_joined": "2025-04-12T10:56:42.957Z"
+  }
+},
+{
+  "model": "accounts.customuser",
+  "pk": 5,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$YtGFZT7Ky9U75EfW3QgQ4v$oLAjJIXYFXZqwHaGkqyefBL57X+PU2rgYnKyVruj7f4=",
+    "last_login": "2025-04-13T15:39:16.194Z",
+    "email": "vamshibillakanti84@gmail.com",
+    "phone_number": "7095264704",
+    "first_name": "vamshi",
+    "last_name": "ballakanti",
+    "address": "Kbhp",
+    "is_buyer": true,
+    "is_seller": false,
+    "is_homemade": false,
+    "is_active": true,
+    "is_staff": false,
+    "date_joined": "2025-04-13T15:36:41.095Z"
+  }
+}
+]
