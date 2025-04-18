@@ -1,0 +1,13 @@
+{% load static %}
+<nav class="navbar">
+    <a href="#" id="appid"><i class="fa-solid fa-mobile"></i> Local Basket</a>
+    <div>
+        <a href="{% url 'buyer:buyer_home' %}">Home</a>
+        <!-- <a href="#">Contact</a> -->
+        <a href="{% url 'buyer:cart' %}">Cart</a>
+        <a href="{% url 'buyer:order_history' %}">📜 Orders</a>
+        <a href="{% url 'accounts:profile' %}">My Profile</a>
+        <!-- <a href="#">{{ request.user.first_name }}</a> -->
+        <a href="{% url 'buyer:buyer_logout' %}" id="logout">Log out</a>
+    </div>
+</nav>

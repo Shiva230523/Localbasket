@@ -1,0 +1,143 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Seller Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/seller_home.css' %}">
+    <script src="{% static 'js/seller_home.js' %}"></script>
+</head>
+<body>
+    <nav>
+        <p>Local Basket</p>
+        <!-- <a href="{% url 'accounts:buyer_login' %}">buyerlogin</a>
+        <a href="{% url 'homemade:login' %}">Homemadelogin</a> -->
+        <a href="{% url 'accounts:profile' %}">Profile</a>
+        <a href="{% url 'seller:seller_logout' %}">Logout</a>
+    </nav>
+    <h1>Welcome, {{ request.user.first_name }}</h1>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h2>{% if update_mode %}Update Item{% else %}Add Item{% endif %}</h2>
+        <input type="hidden" name="item_id" id="item_id" value="{{ update_item.id|default:'' }}">
+        <label for="item">Item:</label>
+        <input type="text" name="item" id="item" value="{{ update_item.item|default:'' }}" required>
+    
+        <label for="price">Price per kg:</label>
+        <input type="number" step="0.01" name="price" id="price" value="{{ update_item.price|default:'' }}" required>
+    
+        <label for="address">Address:</label>
+        <textarea name="address" id="address" required>{{ update_item.address|default:'' }}</textarea>
+    
+        <label for="image">Image:</label>
+        <input type="file" name="image" id="image">
+    
+        <button type="submit">{% if update_mode %}Update{% else %}Add{% endif %} Item</button>
+    </form>
+    
+
+    <hr>
+    <h2>Your Items</h2>
+    <table>
+        <tr>
+            <th>Item</th>
+            <th>Price</th>
+            <th>Address</th>
+            <th>Image</th>
+            <th>Actions</th>
+        </tr>
+        {% for item in seller_items %}
+        <tr>
+            <td>{{ item.item }}</td>
+            <td>{{ item.price }}</td>
+            <td>{{ item.address }}</td>
+            <td>
+                {% if item.image %}
+                    <img src="{{ item.image.url }}" width="80" height="80">
+                {% else %}
+                    No Image
+                {% endif %}
+            </td>
+            <td>
+                <a href="?update={{ item.id }}">Update</a> |
+                <a href="{% url 'seller:delete_item' item.id %}">Delete</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="5">No items added yet.</td></tr>
+        {% endfor %}
+    </table>
+    
+    <hr>
+    
+    <h2>Deal Items</h2>
+    <form method="post" action="{% url 'seller:seller_home' %}">
+        {% csrf_token %}
+        <label for="seller_item_id">Select Item:</label>
+        <select name="seller_item_id" id="seller_item_id" required>
+            {% for item in seller_items %}
+            <option value="{{ item.id }}">{{ item.item }}</option>
+            {% endfor %}
+        </select>
+        <label for="deal_price">Deal Price:</label>
+        <input type="number" step="0.01" name="deal_price" id="deal_price" required>
+        <button type="submit" name="add_deal">Add Deal</button>
+    </form>
+    
+    <table>
+        <tr>
+            <th>Item</th>
+            <th>Deal Price</th>
+            <th>Image</th>
+            <th>Actions</th>
+        </tr>
+        {% for deal in deal_items %}
+        <tr>
+            <td>{{ deal.seller_item.item }}</td>
+            <td>{{ deal.deal_price }}</td>
+            <td>
+                {% if deal.seller_item.image %}
+                    <img src="{{ deal.seller_item.image.url }}" width="80" height="80">
+                {% else %}
+                    No Image
+                {% endif %}
+            </td>
+            <td>
+                <a href="{% url 'seller:delete_deal_item' deal.id %}">Delete</a>
+                <!-- Future: Add Update Deal if needed -->
+            </td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="4">No deal items yet.</td></tr>
+        {% endfor %}
+    </table>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-about">
+                <h4>About Local Basket - Seller Portal</h4>
+                <p>Welcome to the Local Basket Seller Portal. Manage your items, reach local customers, and grow your business from the comfort of your home. Whether you're selling fresh produce or homemade delicacies, we’ve got your back!</p>
+            </div>
+    
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <p>Email: <a href="mailto:localbasketonline@gmail.com">localbasketonline@gmail.com</a></p>
+            </div>
+    
+            <div class="social-icons">
+                <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    
+        <div class="footer-bottom">
+            &copy; 2025 Local Basket | All rights reserved.
+        </div>
+    </footer>
+    
+  
+    
+</body>
+</html>

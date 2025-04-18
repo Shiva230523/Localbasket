@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/buyer_home.css' %}">
+{% include 'nav.html' %}
+
+<div class="page-container">
+    <h2>Welcome to the Local Basket!</h2>
+    <p class="subheading">Hey {{ request.user.first_name }}! Glad to see you back 🖐️</p>
+
+    <form id="searchForm" method="get" action="{% url 'buyer:buyer_home' %}">
+        <input type="text" name="q" id="searchInput" placeholder="Search items..." value="{{ query|default:'' }}">
+        <button type="submit">Search</button>
+        {% if not local_items and not deal_items and not homemade_items %}
+        <p style="text-align: center;">No results found for "<strong>{{ query }}</strong>"</p>
+        {% endif %}
+    </form>
+
+    <!-- Local Vegetables -->
+    <h2>Local Vegetables</h2>
+    <div id="itemsContainer">
+        {% for item in local_items %}
+        <div class="item-display">
+            {% if item.image %}
+                <img src="{{ item.image.url }}" alt="{{ item.item }}" style="max-width: 100px;" class="images">
+            {% endif %}
+            <h3>{{ item.item }}</h3>
+            <p>Price: ₹{{ item.price }} per kg</p>
+            <p>Address: {{ item.address }}</p>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Deal Items -->
+    <h2>Deal Items</h2>
+    <div id="dealItemsContainer">
+        {% for deal in deal_items %}
+        <div class="item-display deal">
+            {% if deal.seller_item.image %}
+                <img src="{{ deal.seller_item.image.url }}" alt="{{ deal.seller_item.item }}" style="max-width: 100px;" class="images">
+            {% endif %}
+            <h3>{{ deal.seller_item.item }}</h3>
+            <p>Deal Price: ₹{{ deal.deal_price }} per kg</p>
+            <p>Is Active: {{ deal.is_active }}</p>
+            <p>Address: {{ deal.seller_item.address }}</p>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Homemade Items -->
+    <h2>Homemade Items</h2>
+    <div id="homemadeContainer">
+        {% for item in homemade_items %}
+        <div class="item-display">
+            {% if item.image %}
+                <img src="{{ item.image.url }}" alt="{{ item.item }}" style="max-width: 100px;" class="images">
+            {% endif %}
+            <h3>{{ item.item }}</h3>
+            <p>Price: ₹{{ item.price }} per kg</p>
+            <p>Address: {{ item.address }}</p>
+            {% if item.order_count >= item.order_limit %}
+                <button class="btn btn-danger" disabled>Out of Stock</button>
+            {% elif item.item in cart_item_names %}
+                <a href="{% url 'buyer:cart' %}" class="btn btn-secondary">Added to Cart</a>
+            {% else %}
+                <a href="{% url 'buyer:add_to_cart' item.id %}" class="btn btn-primary">Add to Cart</a>
+            {% endif %}
+
+        </div>
+        {% endfor %}
+        <ul class="custom-messages">
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        <!-- {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %} -->
+    </div>
+</div>
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-about">
+            <h4>About Local Basket</h4>
+            <p>Local Basket connects you with local vegetable and fruit sellers, as well as homemade product makers, offering fresh and affordable products directly from your neighborhood.</p>
+        </div>
+        <div class="footer-contact">
+            <h4>Contact Us</h4>
+            <p>Email: <a href="mailto:localbasketonline@gmail.com">localbasketonline@gmail.com</a></p>
+            <div class="social-icons">
+                <a href="#" class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon" title="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="social-icon" title="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2025 Local Basket. All rights reserved.</p>
+    </div>
+</footer>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/order_confirmation.css' %}">
+<div id="popup" class="popup-message">
+    ✅ Order Confirmed!
+</div>
+<script>
+    window.onload = function() {
+        const popup = document.getElementById("popup");
+        popup.style.display = "block";
+
+        setTimeout(() => {
+            popup.style.display = "none";
+        }, 3000); // 3 seconds
+    };
+</script>
+<div class="order-confirmation-container">
+    <div class="confirmation-popup">
+        <h2>🎉 Order Confirmed!</h2>
+        <p>Thank you for your purchase. Here are your order details:</p>
+
+        <div class="order-details">
+            <p><strong>Order ID:</strong> {{ order.id }}</p>
+            <p><strong>Order Date:</strong> {{ order.created_at|date:"F j, Y, g:i a" }}</p>
+        </div>
+
+        <table class="order-table">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Qty</th>
+                    <th>Price (₹)</th>
+                    <th>Subtotal (₹)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in order.items.all %}
+                <tr>
+                    <td>
+                        {% if item.item %}
+                            {{ item.item.item }}
+                        {% else %}
+                            [Deleted Item]
+                        {% endif %}
+                    </td>
+                    <td>{{ item.quantity }}</td>
+                    <td>{{ item.price }}</td>
+                    <td>{{ item.subtotal }}</td>
+                    <!-- <td>{{ item.price|floatformat:2|add:""|add:item.quantity|floatformat:2 }}</td> -->
+
+                </tr>
+                {% endfor %}
+            </tbody>
+            
+        </table>
+        <div class="total-amount">
+            <p><strong>Total:</strong> ₹{{ order.total }}</p>
+        </div>
+
+        <a href="{% url 'buyer:buyer_home' %}" class="home-btn">🏠 Go to Home</a>
+    </div>
+</div>
+{% endblock %}

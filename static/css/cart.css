@@ -1,0 +1,140 @@
+.cart-container {
+    width: 90%;
+    margin: auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 10vh;
+}
+
+.cart-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.cart-table th {
+    background-color: #f5a623;
+    color: white;
+    padding: 12px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.cart-table td {
+    text-align: center;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.product-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.product-info img {
+    width: 50px;
+    height: 50px;
+    border-radius: 6px;
+    object-fit: cover;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+.qty-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.qty-btn {
+    background-color: #f5a623;
+    border: none;
+    color: white;
+    font-size: 20px;
+    padding: 5px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.qty-btn:hover {
+    background-color: #e38b0f;
+}
+
+.qty-display {
+    font-size: 18px;
+    font-weight: bold;
+    width: 30px;
+    text-align: center;
+}
+
+.remove-btn {
+    background-color: #ff4d4d;
+    color: white;
+    padding: 6px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.remove-btn:hover {
+    background-color: #cc0000;
+}
+
+.total-section {
+    text-align: right;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.checkout-btn {
+    background-color: #28a745;
+    color: white;
+    padding: 14px 28px;
+    font-size: 18px;
+    text-decoration: none;
+    border-radius: 6px;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.checkout-btn:hover {
+    background-color: #218838;
+}
+
+.custom-messages {
+    position: fixed;
+    top: 70px; /* adjust this if your navbar height is different */
+    right: 20px;
+    z-index: 9999;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .custom-messages li {
+    background-color: #f13636; /* green success background */
+    color: white;
+    padding: 12px 20px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    font-size: 14px;
+    animation: fadeout 0.5s ease-in-out 4.5s forwards;
+  }
+  
+  /* Fade out animation after 4.5s */
+  @keyframes fadeout {
+    to {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+  }
+  

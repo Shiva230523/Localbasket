@@ -1,0 +1,118 @@
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homemade Seller Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/homemade_home.css' %}">
+</head>
+<body class="bg-light">
+    <nav id="main-nav">
+        <div class="nav-left">
+            <p class="logo-text">Local Basket</p>
+        </div>
+        <ul class="nav-links">
+            <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+            <!-- <li class="nav-item"><a href="#" class="nav-link">Contact</a></li> -->
+            <li class="nav-item"><a href="{% url 'homemade:order_requests' %}" class="nav-link">Order Request</a></li>
+            <li class="nav-item"><a href="{% url 'accounts:profile' %}"style="color: white; text-decoration: none;">My Profile</a></li>
+            <li class="nav-item"><a href="{% url 'homemade:homemade_logout' %}" class="nav-link">Logout</a></li>
+            <li class="nav-item"><a href="{% url 'main:home' %}" class="nav-link">Main Page</a></li>
+        </ul>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="text-center mb-4">
+            <h2>Welcome, {{ user.first_name }}!</h2>
+            <p>Manage your homemade items and orders here.</p>
+        </div>
+
+        <div class="market-container">
+            <h1>Your Items</h1>
+
+            <div class="item-grid-container">
+                {% for item in homemade_items %}
+                    <div class="item-card">
+                        {% if item.image %}
+                            <img src="{{ item.image.url }}" alt="{{ item.item }}" class="item-image">
+                        {% else %}
+                            <div class="item-image placeholder">No Image</div>
+                        {% endif %}
+                        <div class="item-details">
+                            <h3 class="item-name">{{ item.item }}</h3>
+                            <p class="item-price">₹{{ item.price }} per Kg</p>
+                            <p class="item-address"><i class="fas fa-map-marker-alt"></i> {{ item.address }}</p>
+                            <p>Limit: {{ item.order_count }} / {{ item.order_limit }}</p>
+
+                            {% if item.order_count >= item.order_limit %}
+                              <span class="status-label out-of-stock">Order Limit Reached</span>
+                            {% else %}
+                              <span class="status-label in-stock">Available</span>
+                            {% endif %}
+                        </div>
+                        <div class="item-actions">
+                            <a href="?edit={{ item.id }}" class="update-button"><i class="fas fa-edit"></i> Update</a>
+                            <form method="POST" style="display:inline;">
+                                {% csrf_token %}
+                                <input type="hidden" name="reset" value="{{ item.id }}">
+                                <button type="submit" class="reset-button"><i class="fas fa-sync-alt"></i> Reset</button>
+                            </form>
+                            <a href="{% url 'homemade:delete_homemade_item' item.id %}" class="delete-button"><i class="fas fa-trash-alt"></i> Delete</a>
+                        </div>
+                        
+                    </div>
+                {% empty %}
+                    <p class="empty-message">You haven't added any items yet. Start by adding one below!</p>
+                {% endfor %}
+            </div>
+
+            <div class="add-item-section">
+                <h2>{% if update_item %}Update Item{% else %}Add New Item{% endif %}</h2>
+                <form method="POST" enctype="multipart/form-data" class="add-item-form">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="add-button">
+                        {% if update_item %}
+                            <i class="fas fa-save"></i> Update Item
+                        {% else %}
+                            <i class="fas fa-plus-circle"></i> Add Item
+                        {% endif %}
+                    </button>
+                </form>
+            </div>
+            
+        </div>
+
+    </div>
+    <script src="https://kit.fontawesome.com/your_fontawesome_kit.js" crossorigin="anonymous"></script>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-about">
+                <h4>About Local Basket - Seller Portal</h4>
+                <p>Welcome to the Local Basket Seller Portal. Manage your items, reach local customers, and grow your business from the comfort of your home. Whether you're selling fresh produce or homemade delicacies, we’ve got your back!</p>
+            </div>
+    
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <p>Email: <a href="mailto:localbasketonline@gmail.com">localbasketonline@gmail.com</a></p>
+            </div>
+    
+            <div class="social-icons">
+                <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    
+        <div class="footer-bottom">
+            &copy; 2025 Local Basket | All rights reserved.
+        </div>
+    </footer>
+    
+</body>
+</html>

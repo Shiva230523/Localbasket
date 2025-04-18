@@ -1,0 +1,64 @@
+
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/homemade_order_requests.css' %}">
+<link rel="stylesheet" href="{% static 'css/homemade_home.css' %}"> <nav id="main-nav">
+        <div class="nav-left">
+            <p class="logo-text">Local Basket</p>
+        </div>
+        <ul class="nav-links">
+            <li class="nav-item"><a href="{% url 'homemade:homemade_home' %}" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
+            <li class="nav-item"><a href="{% url 'homemade:order_requests' %}" class="nav-link active">Order Request</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Profile</a></li>
+            <li class="nav-item"><a href="{% url 'homemade:homemade_logout' %}" class="nav-link">Logout</a></li>
+            <li class="nav-item"><a href="{% url 'main:home' %}" class="nav-link">Main Page</a></li>
+        </ul>
+    </nav>
+
+<div id="order-requests-section" class="container mt-5"> <h2 id="order-requests-title" class="section-title">📦 Order Requests for You</h2>
+
+    {% if order_items %}
+    <div class="table-responsive">
+        <table id="order-table" class="styled-table">
+            <thead>
+                <tr>
+                    <th class="header-order-id">Order ID</th>
+                    <th class="header-item">Item</th>
+                    <th class="header-quantity">Qty</th>
+                    <th class="header-price">Price (₹)</th>
+                    <th class="header-buyer">Buyer</th>
+                    <th class="header-buyer-email">Buyer Email</th>
+                    <th class="header-phone">Phone Number</th>
+                    <th class="header-address">Address</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in order_items %}
+                <tr class="order-row" style="--row-index: {{ forloop.counter }};">
+                    <td class="data-order-id">{{ item.order.id }}</td>
+                    <td class="data-item">{{ item.item.item }}</td>
+                    <td class="data-quantity">{{ item.quantity }}</td>
+                    <td class="data-price">{{ item.price }}</td>
+                    <td class="data-buyer">{{ item.order.user.first_name }} {{ item.order.user.last_name }}</td>
+                    <td class="data-buyer-email">{{ item.order.user.email }}</td>
+                    <td class="data-phone">{{ item.order.user.phone_number }}</td>
+                    <td class="data-address">
+                        {% if item.order.delivery_address %}
+                            {{ item.order.delivery_address }}
+                        {% else %}
+                            {{ item.order.user.address }}
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <p id="no-orders-message" class="empty-message">No orders placed for your items yet.</p>
+    {% endif %}
+</div>
+
+{% endblock %}

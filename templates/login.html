@@ -1,0 +1,85 @@
+{%extends 'base.html'%}
+{%block title%}Login - LocalBasket {%endblock%}
+{%block content%}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+<script src="{% static 'js/login.js' %}"></script>
+<div class="login-container">
+    <div class="role-info">
+        <p>You are login as a <strong>{{ role }}</strong></p>
+    </div>
+    <h2>Login</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Login</button>
+    </form>
+
+    {% if role == 'buyer' %}
+        <p>Don't have an account? <a href="{% url 'buyer:register' %}">Register as Buyer</a></p>
+    {% elif role == 'seller' %}
+        <p>Don't have an account? <a href="{% url 'seller:register' %}">Register as Seller</a></p>
+    {% elif role == 'homemade' %}
+        <p>Don't have an account? <a href="{% url 'homemade:register' %}">Register as Homemade Seller</a></p>
+    {% endif %}
+</div>
+{% if messages %}
+  {% for message in messages %}
+    <div class="message-box" id="msg-{{ forloop.counter }}">
+      {{ message }}
+    </div>
+  {% endfor %}
+{% endif %}
+
+
+
+{%endblock%}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- accounts/templates/accounts/login.html -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <div class="role-info">
+        <p>You are login as a <strong>{{ role }}</strong></p>
+    </div>
+    <h2>Login</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Login</button>
+    </form>
+    {% if role == 'buyer' %}
+        <p>Don't have an account? <a href="{% url 'buyer:register' %}">Register as Buyer</a></p>
+    {% elif role == 'seller' %}
+        <p>Don't have an account? <a href="{% url 'seller:register' %}">Register as Seller</a></p>
+    {% elif role == 'homemade' %}
+        <p>Don't have an account? <a href="{% url 'homemade:register' %}">Register as Homemade Seller</a></p>
+    {% endif %}
+</body>
+</html>
+ -->

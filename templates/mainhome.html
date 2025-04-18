@@ -1,0 +1,95 @@
+{%extends 'base.html'%}
+{% load static %}
+{%block title%}Main Home - LocalBasket {%endblock%}
+{%block content%}
+<link rel="stylesheet" href="{% static 'main/mainhome.css' %}">
+
+<div class="container">
+    <div class="box seller animate">
+        <h2>Seller Portal</h2>
+        <p>Register or login as a seller to post your fresh items like vegetables or fruits.</p>
+        <a href="{% url 'seller:login' %}" class="btn">Go to Vegetable Seller</a>
+    </div>
+
+    <div class="box buyer animate delay-1">
+        <h2>Buyer Portal</h2>
+        <p>Login to browse and buy fresh produce from your local sellers.</p>
+        <a href="{% url 'buyer:login' %}" class="btn">Go to Buyer</a>
+    </div>
+
+    <div class="box homemade animate delay-2">
+        <h2>Homemade Items</h2>
+        <p>Share and shop homemade pickles, snacks and more!</p>
+        <a href="{% url 'homemade:login' %}" class="btn">Go to Homemade Seller</a>
+    </div>
+</div>
+
+
+{%endblock%}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- {% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main Home - LocalBasket</title>
+    <link rel="stylesheet" href="{% static 'main/mainhome.css' %}">
+    
+</head>
+<body>
+    <div class="container">
+        <div class="box seller">
+            <h2>Seller Portal</h2>
+            <p>Register or login as a seller to post your fresh items like vegetables or fruits.</p>
+            <a href="{% url 'seller:login' %}" class="btn">Go to Vegtable Seller</a>
+        </div>
+
+        <div class="box buyer">
+            <h2>Buyer Portal</h2>
+            <p>Login to browse and buy fresh produce from your local sellers.</p>
+            <a href="{% url 'buyer:login' %}" class="btn">Go to Buyer</a>
+        </div>
+
+        <div class="box homemade">
+            <h2>Homemade Items</h2>
+            <p>Share and shop homemade pickles, snacks and more!</p>
+            <a href="{% url 'homemade:login' %}" class="btn">Go to Home made seller</a>
+        </div>
+    </div>
+</body>
+</html> -->
+

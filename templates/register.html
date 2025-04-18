@@ -1,0 +1,31 @@
+
+ {% extends 'base.html' %}
+ {% block title %}RegisterPage - LocalBasket{% endblock %}
+ {% block content %}
+ <div class="registration-container">
+     <div class="role-info">
+         <p id="role-text">You are registering as a <strong class="role-name">{{ role }}</strong></p>
+     </div>
+ 
+     <form id="registration-form" method="post">
+         {% csrf_token %}
+         <div id="form-fields" class="form-fields">
+             {{ form.as_p }}
+         </div>
+ 
+         <input type="hidden" name="role" value="{{ role }}">
+         <button id="register-button" type="submit" class="register-button">Register</button>
+     </form>
+ 
+     <div class="login-link">
+         {% if role == 'buyer' %}
+             <p>Already have an account? <a href="{% url 'accounts:buyer_login' %}" class="login-link-url">Login</a></p>
+         {% elif role == 'seller' %}
+             <p>Already have an account? <a href="{% url 'accounts:seller_login' %}" class="login-link-url">Login</a></p>
+         {% elif role == 'homemade' %}
+             <p>Already have an account? <a href="{% url 'accounts:homemade_login' %}" class="login-link-url">Login</a></p>
+         {% endif %}
+     </div>
+ </div>
+ {% endblock %}
+ 

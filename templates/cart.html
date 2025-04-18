@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/cart.css' %}">
+<!-- <script src="{% static 'js/cart.js' %}"></script> -->
+{% include 'nav.html' %}
+
+<div class="cart-container">
+    <h1>🛒 Shopping Cart</h1>
+
+    {% if cart_items %}
+    <form method="post" action="{% url 'buyer:update_cart_bulk' %}">
+        {% csrf_token %}
+        <table class="cart-table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Subtotal</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cart_item in cart_items %}
+                <tr>
+                    <td class="product-info">
+                        {% if cart_item.item.image %}
+                            <img src="{{ cart_item.item.image.url }}" alt="{{ cart_item.item.name }}">
+                        {% else %}
+                            <img src="{% static 'img/default.png' %}" alt="{{ cart_item.item.name }}">
+                        {% endif %}
+                        <span>{{ cart_item.item.name }}</span>
+                    </td>
+                    <td>
+                        <div class="qty-controls">
+                            <button type="submit" name="decrement" value="{{ cart_item.id }}" class="qty-btn">−</button>
+                            <span class="qty-display">{{ cart_item.quantity }}</span>
+                            <button type="submit" name="increment" value="{{ cart_item.id }}" class="qty-btn">+</button>
+                        </div>
+                    </td>
+                    <td>₹{{ cart_item.item.price }}</td>
+                    <td>₹{{ cart_item.subtotal }}</td>
+                    <td>
+                        <a href="{% url 'buyer:delete_from_cart' cart_item.item.id %}" class="remove-btn">Remove</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </form>
+
+    <!-- <form method="post" action="{% url 'buyer:place_order' %}">
+        {% csrf_token %}
+        <div class="total-section">
+            <label for="delivery_address"><strong>Delivery Address:</strong></label><br>
+            <textarea name="delivery_address" id="delivery_address" rows="3" placeholder="Enter custom address if different..." required></textarea>
+    
+            <p><strong>Total:</strong> ₹{{ total }}</p>
+            <button type="submit" class="checkout-btn">Order Now</button>
+        </div>
+    </form> -->
+    <form method="get" action="{% url 'buyer:checkout' %}">
+        <div class="total-section">
+            <p><strong>Total:</strong> ₹{{ total }}</p>
+            <button type="submit" class="checkout-btn">Proceed</button>
+        </div>
+    </form>
+    
+
+    {% else %}
+    <p>Your cart is empty.</p>
+    {% endif %}
+</div>
+<ul class="custom-messages">
+    {% for message in messages %}
+        <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+<!-- {% if messages %}
+<ul class="custom-messages">
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %} -->
+</ul>
+{% endif %}
+{% endblock %}
