@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-npy0i(-5ka257&@)tl5gl-5fp70m&powynz0p-7wldui=-ls5d
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -139,7 +139,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS=[STATIC_DIR]
 MEDIA_URL='media/'
-
+MIDDLEWARE.insert(1, "whitenoise.middleware.WhiteNoiseMiddleware")
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
