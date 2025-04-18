@@ -1,0 +1,152 @@
+/* Background and font setup */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #a1c4fd, #c2e9fb, #d4fc79, #96e6a1);
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Gradient animation */
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Main container for login */
+.login-container {
+    background-color: white;
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    width: 500px;
+    max-width: 90%;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* Role info text */
+.role-info p {
+    color: #7c4dff;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Heading */
+.login-container h2 {
+    margin-bottom: 25px;
+    color: #2c3e50;
+}
+
+/* Form input and label styling */
+form label {
+    display: block;
+    text-align: left;
+    margin: 10px 0 5px;
+    font-weight: 500;
+}
+
+form input {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background-color: #f1f3ff;
+    border-radius: 10px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+/* Submit button */
+form button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(to right, #7f7fd5, #86a8e7);
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+form button:hover {
+    opacity: 0.9;
+}
+
+/* Register link styling */
+.login-container p {
+    margin-top: 15px;
+    color: #2c3e50;
+}
+
+.login-container a {
+    color: #7c4dff;
+    text-decoration: none;
+}
+
+.login-container a:hover {
+    text-decoration: underline;
+}
+
+/* Media Queries for responsiveness */
+@media screen and (max-width: 768px) {
+    .login-container {
+        padding: 30px 20px;
+        width: 90%;
+    }
+
+    form input,
+    form button {
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .login-container {
+        padding: 25px 15px;
+        border-radius: 20px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    form input,
+    form button {
+        font-size: 14px;
+    }
+}
+
+
+.message-box {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 500;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    background-color: #e74c3c; /* red for errors */
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+  }
+  
+  .message-box.fade-out {
+    opacity: 0;
+  }
+  

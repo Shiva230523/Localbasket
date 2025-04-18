@@ -1,0 +1,223 @@
+/* Base styles (applied to all screen sizes) */
+body {
+    background: linear-gradient(to right, #73daea, #82c4b0);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px; /* Adjust gap for smaller screens */
+    padding: 20px;
+}
+
+
+.box {
+    position: relative;
+    overflow: hidden;
+    padding: 20px;
+    border-radius: 20px;
+    min-width: 280px;
+    height: 200px;
+    color: #fff;
+    text-align: center;
+    transform: translateY(20px);
+    opacity: 0;
+    animation: fadeInUp 0.6s ease forwards;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+    
+    /* Thick permanent shadow */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+}
+
+/* On hover: larger shadow + glow + border */
+.box:hover {
+    transform: scale(1.06);
+    box-shadow: 0 25px 55px rgba(0, 0, 0, 0.5);
+    filter: brightness(1.1);
+    border: 2px solid rgba(255, 255, 255, 0.5); /* Light border */
+}
+
+/* Glowing effect overlay */
+.box:hover::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    right: 0; bottom: 0;
+    border-radius: 20px;
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.3), 0 0 15px rgba(255, 255, 255, 0.2);
+    pointer-events: none;
+    z-index: 1;
+}
+
+
+.box {
+    padding: 20px; /* Adjust padding for smaller screens */
+    border-radius: 15px; /* Slightly smaller border-radius for smaller screens */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Slightly smaller shadow */
+    width: calc(50% - 30px); /* Two boxes side-by-side on larger screens */
+    min-width: 280px; /* Minimum width for smaller screens */
+    height: 200px; 
+    color: #fff;
+    text-align: center;
+    transform: translateY(20px); /* Smaller initial translateY */
+    opacity: 0;
+    animation: fadeInUp 0.6s ease forwards; /* Slightly faster animation */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Faster transition */
+}
+
+.box:hover {
+    transform: scale(1.03); /* Smaller scale on hover */
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25); /* Adjusted hover shadow */
+}
+
+.seller {
+    background: linear-gradient(135deg, #74f65d, #29bc3c);
+}
+
+.buyer {
+    background: linear-gradient(135deg, #54396e, #06265d);
+}
+
+.homemade {
+    background: linear-gradient(135deg, #25ccf6, #0072ff);
+}
+
+h2 {
+    margin-bottom: 10px; /* Smaller margin */
+    font-size: 20px; /* Smaller font size */
+    color: #fff;
+}
+
+p {
+    margin-bottom: 15px; /* Smaller margin */
+    font-size: 14px; /* Smaller font size */
+}
+
+.btn {
+    background-color: #ffffff;
+    color: #333;
+    padding: 8px 16px; /* Smaller padding */
+    border-radius: 25px; /* Slightly smaller border-radius */
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.2s, color 0.2s; /* Faster transition */
+}
+
+.btn:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.animate {
+    animation-delay: 0.15s; /* Slightly shorter delay */
+}
+
+.animate.delay-1 {
+    animation-delay: 0.3s;
+}
+
+.animate.delay-2 {
+    animation-delay: 0.45s;
+}
+
+/* Media queries for different screen sizes */
+
+/* For tablets and larger phones (min-width: 600px) */
+@media (min-width: 600px) {
+    .container {
+        gap: 30px;
+    }
+    .box {
+        padding: 25px;
+        border-radius: 18px;
+        box-shadow: 0 9px 22px rgba(0, 0, 0, 0.15);
+        width: calc(50% - 40px);
+        transform: translateY(30px);
+        animation-duration: 0.7s;
+        transition-duration: 0.25s;
+    }
+    .box:hover {
+        transform: scale(1.04);
+        box-shadow: 0 13px 32px rgba(0, 0, 0, 0.3);
+    }
+    h2 {
+        font-size: 22px;
+        margin-bottom: 11px;
+    }
+    p {
+        font-size: 15px;
+        margin-bottom: 18px;
+    }
+    .btn {
+        padding: 9px 18px;
+        border-radius: 28px;
+        transition-duration: 0.25s;
+    }
+    .animate {
+        animation-delay: 0.2s;
+    }
+    .animate.delay-1 {
+        animation-delay: 0.4s;
+    }
+    .animate.delay-2 {
+        animation-delay: 0.6s;
+    }
+}
+
+/* For larger desktop screens (min-width: 992px) */
+@media (min-width: 992px) {
+    .container {
+        gap: 40px;
+    }
+    .box {
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        width: 320px;
+        transform: translateY(40px);
+        animation-duration: 0.8s;
+        transition-duration: 0.3s;
+    }
+    .box:hover {
+        transform: scale(1.05);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    }
+    h2 {
+        font-size: 24px;
+        margin-bottom: 12px;
+    }
+    p {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    .btn {
+        padding: 10px 20px;
+        border-radius: 30px;
+        transition-duration: 0.3s;
+    }
+    .animate {
+        animation-delay: 0.2s;
+    }
+    .animate.delay-1 {
+        animation-delay: 0.4s;
+    }
+    .animate.delay-2 {
+        animation-delay: 0.6s;
+    }
+}

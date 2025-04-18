@@ -1,0 +1,69 @@
+/* order_history.css */
+
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.order-history-container {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+.order-history-container h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    font-size: 2rem;
+}
+
+.order-card {
+    background: #ffffff;
+    border-left: 6px solid #27ae60;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 30px;
+    transition: transform 0.2s ease;
+}
+
+.order-card:hover {
+    transform: scale(1.01);
+}
+
+.order-card h3 {
+    color: #27ae60;
+    margin-bottom: 10px;
+}
+
+.order-card p {
+    margin: 5px 0;
+    color: #555;
+}
+
+.order-items-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.order-items-table th,
+.order-items-table td {
+    padding: 10px 12px;
+    border: 1px solid #e0e0e0;
+    text-align: center;
+}
+
+.order-items-table thead {
+    background-color: #2ecc71;
+    color: #fff;
+}
+
+.order-items-table tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+.order-items-table tbody tr:hover {
+    background-color: #ecf0f1;
+}
